@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="box">
+<h2>เขียนจดหมาย 💖</h2>
+
+<input id="to" placeholder="ถึง...">
+<textarea id="msg" placeholder="ข้อความ"></textarea>
+
+<button onclick="save()">บันทึก</button>
+
+<div id="result"></div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+<script src="firebase.js"></script>
+
+<script>
+function save(){
+    db.collection("letters").add({
+        to: to.value,
+        msg: msg.value,
+        time: new Date()
+    }).then(doc=>{
+        const link = "view.html?id=" + doc.id;
+        result.innerHTML = `<a href="${link}" target="_blank">เปิดจดหมาย</a>`;
+    });
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>Love Letter</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body class="center">
+
+<h1>💌 Love Letter</h1>
+
+<button onclick="login()">เข้าสู่ระบบด้วย Google</button>
+
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+<script src="firebase.js"></script>
+
+<script>
+function login(){
+    const provider = new firebase.auth.GoogleAuthProvider();
+    auth.signInWithPopup(provider).then(()=>{
+        location.href="app.html";
+    });
+}
+</script>
+
+</body>
+</html>

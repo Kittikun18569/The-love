@@ -1,0 +1,60 @@
+body{
+    font-family: sans-serif;
+    background:#111;
+    color:white;
+}
+
+.center{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    flex-direction:column;
+}
+
+.box{
+    max-width:400px;
+    margin:auto;
+}
+
+input, textarea{
+    width:100%;
+    margin:10px 0;
+    padding:10px;
+}
+
+button{
+    padding:10px;
+    width:100%;
+    background:#ff4d6d;
+    color:white;
+    border:none;
+}
+
+.envelope{
+    font-size:30px;
+    cursor:pointer;
+    animation: bounce 1s infinite;
+}
+
+@keyframes bounce{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-10px);}
+}
+
+.letter{
+    background:white;
+    color:black;
+    padding:20px;
+    border-radius:15px;
+    animation: open 0.8s ease;
+}
+
+@keyframes open{
+    from{transform:scale(0);}
+    to{transform:scale(1);}
+}
+
+.hidden{
+    display:none;
+}

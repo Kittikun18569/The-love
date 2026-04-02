@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body class="center">
+
+<div class="envelope" onclick="openLetter()">
+    ✉️ กดเพื่อเปิดจดหมาย
+</div>
+
+<div id="letter" class="letter hidden"></div>
+
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+<script src="firebase.js"></script>
+
+<script>
+const params = new URLSearchParams(location.search);
+const id = params.get("id");
+
+db.collection("letters").doc(id).get().then(doc=>{
+    window.data = doc.data();
+});
+
+function openLetter(){
+    document.querySelector(".envelope").style.display="none";
+
+    const el = document.getElementById("letter");
+    el.classList.remove("hidden");
+    el.innerHTML = `
+        <h2>ถึง ${data.to}</h2>
+        <p>${data.msg}</p>
+    `;
+}
+</script>
+
+</body>
+</html>
